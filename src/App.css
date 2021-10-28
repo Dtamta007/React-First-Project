@@ -1,0 +1,38 @@
+.nav-link{
+    color:#fff;
+}
+
+.nav-link:hover{
+    color:#fff;
+}
+
+.card-dish{
+    margin: 2% auto;
+}
+
+.display{
+    margin: 2% auto;
+    /* width: 65%; */
+    padding: 3%;
+    background-color: rgba(0,0,0,0.5);
+    border-radius:50px;
+}
+
+.display img{
+    width: 50%;
+    border-radius:20px;
+}
+
+.display h3,.display p {
+    color: #fff;
+}
+
+.display-img{
+    display: flex;
+    justify-content: center;
+}
+
+.comments{
+    margin: 2% auto;
+    padding: 3%;
+}
