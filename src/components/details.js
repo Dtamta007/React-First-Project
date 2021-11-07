@@ -33,9 +33,9 @@ class Detail extends React.Component {
         });
     }
 
-    handleSubmit(values){
+    handleSubmit(values, dishId, addComment) {
         console.log("The values entered: " + JSON.stringify(values));
-        alert("The values entered: " + JSON.stringify(values));
+        addComment(dishId, values.rating, values.author, values.comment);
         this.toggleModal();
     }
 
@@ -93,7 +93,7 @@ class Detail extends React.Component {
                     <Modal isOpen={this.state.isModalOpen} toggle={this.toggleModal}>
                         <ModalHeader toggle={this.toggleModal}>Submit Comment</ModalHeader>
                         <ModalBody>
-                            <LocalForm onSubmit={(values)=> this.handleSubmit(values)}> 
+                            <LocalForm onSubmit={(values, dishId, addcomment)=> this.handleSubmit(values, dish.id, this.props.addComment)}> 
                                 <Row className="form-group">
                                     <Label htmlFor="rating">Rating</Label>
                                     <Control.select 
