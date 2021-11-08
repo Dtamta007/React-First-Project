@@ -1,6 +1,7 @@
 import React from 'react';
 import { Breadcrumb, BreadcrumbItem } from 'reactstrap';
 import { Link } from 'react-router-dom';
+import {Loading} from './loadingComponent';
 
 function RenderMenuItem({dish}){
     const styleObj={
@@ -22,13 +23,35 @@ function RenderMenuItem({dish}){
 
 const Menu = (props) => {
 
-    const menu = props.dishes.map(dish => {
+    const menu = props.dishes.dishes.map(dish => {
         return (
             <div key={dish.id} className="card-dish">
                 <RenderMenuItem dish={dish} />
             </div>
         );
     });
+
+    if(props.dishes.isLoading) {
+        return(
+            <div className="container">
+                <div className="row">            
+                    <Loading />
+                </div>
+            </div>
+        );
+    }
+
+    if (props.dishes.errMess) {
+        return(
+            <div className="container">
+                <div className="row"> 
+                    <div className="col-12">
+                        <h4>{props.dishes.errMess}</h4>
+                    </div>
+                </div>
+            </div>
+        );
+    }
 
     return(
 
