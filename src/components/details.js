@@ -3,6 +3,7 @@ import React from 'react';
 import { Breadcrumb, BreadcrumbItem, Modal, ModalBody, ModalHeader, Row, Label, Button } from 'reactstrap';
 import { LocalForm, Control, Errors } from 'react-redux-form';
 import {Link} from 'react-router-dom';
+import {Loading} from './loadingComponent';
 
 const required = (val) => {
     if(val){
@@ -40,6 +41,24 @@ class Detail extends React.Component {
     }
 
     render(){
+        if(this.props.isLoading){
+            return(
+                <div className="container">
+                    <div className="row">            
+                        <Loading />
+                    </div>
+                </div>
+            );
+        }
+        if(this.props.errMess){
+            return(
+                <div className="container">
+                    <div className="row">            
+                        <h4>{this.props.errMess}</h4>
+                    </div>
+                </div>
+            );
+        }
         if(this.props.dish!=null){
             const comments = this.props.comments.map(comment => {
                 return(
